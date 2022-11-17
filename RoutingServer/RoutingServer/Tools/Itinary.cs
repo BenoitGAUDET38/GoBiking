@@ -23,7 +23,7 @@ namespace RoutingServer.Tools
 			string res = "Origin closest station : " + closestOriginStation.ToString() + Environment.NewLine +
 				"Destination closest station : " + closestDestinationStation.ToString();
 
-			return res;
+			return await openStreetMapTools.GetDirectionsAsync(closestOriginStation.position, closestDestinationStation.position);
 		}
 
 	}

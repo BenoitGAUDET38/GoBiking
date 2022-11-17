@@ -61,5 +61,17 @@ namespace RoutingServer
 			}
             return cityName;
         }
+
+        /**
+         * Return a string corresponding to the directions to take between 2 coordinates in JSON format (WITH BIKE MOVE SPEED)
+         */
+        public async Task<string> GetDirectionsAsync(Coordinate startCoordinate, Coordinate endCoordinate)
+		{
+            string directionsUrl = _baseUrl + "v2/directions/cycling-regular" + "?api_key=" + _openRouteMapApiKey
+                + "&start=" + startCoordinate.GetLongitudeString() + "," + startCoordinate.GetLatitudeString()
+                + "&end=" + endCoordinate.GetLongitudeString() + "," + endCoordinate.GetLatitudeString();
+            string directionsJson = await RequestTools.GetRequest(directionsUrl);
+            return directionsJson;
+        }
     }
 }

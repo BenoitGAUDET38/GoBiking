@@ -44,6 +44,7 @@
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -77,12 +78,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IGoBikeService.cs" />
-    <Compile Include="Tools\OpenStreetMap\Contract.cs" />
-    <Compile Include="Tools\JCDecaux\Geocode.cs" />
-    <Compile Include="Tools\JCDecaux\Coordinate.cs" />
-    <Compile Include="Tools\OpenStreetMap\JCDecauxTools.cs" />
-    <Compile Include="Tools\JCDecaux\OpenStreetMapTools.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Tools\Itinary.cs" />
+    <Compile Include="Tools\JCDecaux\Contract.cs" />
+    <Compile Include="Tools\JCDecaux\Station.cs" />
+    <Compile Include="Tools\OpenStreetMap\Geocode.cs" />
+    <Compile Include="Tools\Coordinate.cs" />
+    <Compile Include="Tools\JCDecaux\JCDecauxTools.cs" />
+    <Compile Include="Tools\OpenStreetMap\OpenStreetMapTools.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GoBikeService.cs" />
     <Compile Include="Tools\RequestTools.cs" />

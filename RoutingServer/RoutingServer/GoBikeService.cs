@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RoutingServer.Tools;
+using RoutingServer.Tools.JCDecaux;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -12,14 +14,8 @@ namespace RoutingServer
 	{
 		public async Task<string> GetItinary(string originAdress, string destinationAdress)
 		{
-			OpenStreetMapTools tool = new OpenStreetMapTools();
-			Coordinate originCoordinate = await tool.GetPositionFromAdressAsync(originAdress);
-			Coordinate destinationCoordinate = await tool.GetPositionFromAdressAsync(destinationAdress);
-
-			string res = "Origin : " + originCoordinate.ToString() + Environment.NewLine +
-				"Destination : " + destinationCoordinate.ToString();
-			
-			return res;
+			Itinary itinary = new Itinary();
+			return await itinary.GetItinaryAsync(originAdress, destinationAdress);
 		}
 	}
 }

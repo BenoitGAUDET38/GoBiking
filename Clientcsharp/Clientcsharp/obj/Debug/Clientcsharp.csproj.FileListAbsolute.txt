@@ -5,3 +5,10 @@ C:\Polytech\SOCWS\projet\Clientcsharp\Clientcsharp\bin\Debug\Clientcsharp.exe
 C:\Polytech\SOCWS\projet\Clientcsharp\Clientcsharp\bin\Debug\Clientcsharp.pdb
 C:\Polytech\SOCWS\projet\Clientcsharp\Clientcsharp\obj\Debug\Clientcsharp.exe
 C:\Polytech\SOCWS\projet\Clientcsharp\Clientcsharp\obj\Debug\Clientcsharp.pdb
+C:\Polytech\SOCWS\GoBiking\Clientcsharp\Clientcsharp\bin\Debug\Clientcsharp.exe.config
+C:\Polytech\SOCWS\GoBiking\Clientcsharp\Clientcsharp\bin\Debug\Clientcsharp.exe
+C:\Polytech\SOCWS\GoBiking\Clientcsharp\Clientcsharp\bin\Debug\Clientcsharp.pdb
+C:\Polytech\SOCWS\GoBiking\Clientcsharp\Clientcsharp\obj\Debug\Clientcsharp.csproj.AssemblyReference.cache
+C:\Polytech\SOCWS\GoBiking\Clientcsharp\Clientcsharp\obj\Debug\Clientcsharp.csproj.CoreCompileInputs.cache
+C:\Polytech\SOCWS\GoBiking\Clientcsharp\Clientcsharp\obj\Debug\Clientcsharp.exe
+C:\Polytech\SOCWS\GoBiking\Clientcsharp\Clientcsharp\obj\Debug\Clientcsharp.pdb

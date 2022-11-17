@@ -12,7 +12,7 @@ namespace Clientcsharp
 		{
 			GoBikeService.GoBikeServiceClient goBikeServiceClient = new GoBikeService.GoBikeServiceClient();
 
-			string res = await goBikeServiceClient.GetItinaryAsync("Sophia antipolis", "2400 Rte des Dolines, 06560 Valbonne");
+			string res = await goBikeServiceClient.GetItinaryAsync("3 Place de la République, Mulhouse", "BOULEVARD CHARLES STOESSEL, Mulhouse");
 			Console.WriteLine(res);
 			Console.ReadLine();
 		}

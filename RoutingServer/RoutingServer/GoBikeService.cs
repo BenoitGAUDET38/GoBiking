@@ -14,8 +14,15 @@ namespace RoutingServer
 	{
 		public async Task<string> GetItinary(string originAdress, string destinationAdress)
 		{
-			Itinary itinary = new Itinary();
-			return await itinary.GetItinaryAsync(originAdress, destinationAdress);
+			try
+			{
+				Itinary itinary = new Itinary();
+				return await itinary.GetItinaryAsync(originAdress, destinationAdress);
+			}
+			catch (Exception)
+			{
+				return "Des problèmes ont été rencontré par le serveur...";
+			}
 		}
 	}
 }

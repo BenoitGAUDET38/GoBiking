@@ -81,6 +81,7 @@
     <Compile Include="Tools\Itinary.cs" />
     <Compile Include="Tools\JCDecaux\Contract.cs" />
     <Compile Include="Tools\JCDecaux\Station.cs" />
+    <Compile Include="Tools\OpenStreetMap\Direction.cs" />
     <Compile Include="Tools\OpenStreetMap\Geocode.cs" />
     <Compile Include="Tools\Coordinate.cs" />
     <Compile Include="Tools\JCDecaux\JCDecauxTools.cs" />

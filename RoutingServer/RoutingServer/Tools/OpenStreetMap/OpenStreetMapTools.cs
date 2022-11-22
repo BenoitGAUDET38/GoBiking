@@ -1,4 +1,5 @@
 ﻿using RoutingServer.Tools;
+using RoutingServer.Tools.OpenStreetMap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,13 +66,19 @@ namespace RoutingServer
         /**
          * Return a string corresponding to the directions to take between 2 coordinates in JSON format (WITH BIKE MOVE SPEED)
          */
-        public async Task<string> GetDirectionsAsync(Coordinate startCoordinate, Coordinate endCoordinate)
+        public async Task<Direction> GetDirectionsAsync(Coordinate startCoordinate, Coordinate endCoordinate, bool onBike)
 		{
-            string directionsUrl = _baseUrl + "v2/directions/cycling-regular" + "?api_key=" + _openRouteMapApiKey
+            string modeType = "foot-walking";
+            if (onBike)
+                modeType = "cycling-regular";
+
+            string directionsUrl = _baseUrl + "v2/directions/" + modeType + "?api_key=" + _openRouteMapApiKey
                 + "&start=" + startCoordinate.GetLongitudeString() + "," + startCoordinate.GetLatitudeString()
                 + "&end=" + endCoordinate.GetLongitudeString() + "," + endCoordinate.GetLatitudeString();
             string directionsJson = await RequestTools.GetRequest(directionsUrl);
-            return directionsJson;
+            Direction direction = JsonSerializer.Deserialize<Direction>(directionsJson);
+
+            return direction;
         }
     }
 }

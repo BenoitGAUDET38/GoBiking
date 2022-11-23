@@ -12,6 +12,6 @@ namespace RoutingServer
 	public interface IGoBikeService
 	{
 		[OperationContract]
-		Task<string> GetItinary(string origin, string destination);
+		string GetItinary(string origin, string destination);
 	}
 }

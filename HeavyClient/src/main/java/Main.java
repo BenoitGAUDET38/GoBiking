@@ -1,5 +1,5 @@
-import client.generated.GoBikeService;
-import client.generated.IGoBikeService;
+import com.soap.ws.client.generated.GoBikeService;
+import com.soap.ws.client.generated.IGoBikeService;
 
 public class Main {
     public static void main(String[] args) {

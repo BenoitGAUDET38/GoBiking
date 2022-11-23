@@ -1,5 +1,5 @@
 
-package client.generated;
+package com.soap.ws.client.generated;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlAccessType;

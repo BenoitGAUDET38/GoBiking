@@ -1,5 +1,5 @@
 
-package client.generated;
+package com.soap.ws.client.generated;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -32,8 +32,8 @@ public interface IGoBikeService {
      */
     @WebMethod(operationName = "GetItinary", action = "http://tempuri.org/IGoBikeService/GetItinary")
     @WebResult(name = "GetItinaryResult", targetNamespace = "http://tempuri.org/")
-    @RequestWrapper(localName = "GetItinary", targetNamespace = "http://tempuri.org/", className = "client.generated.GetItinary")
-    @ResponseWrapper(localName = "GetItinaryResponse", targetNamespace = "http://tempuri.org/", className = "client.generated.GetItinaryResponse")
+    @RequestWrapper(localName = "GetItinary", targetNamespace = "http://tempuri.org/", className = "com.soap.ws.client.generated.GetItinary")
+    @ResponseWrapper(localName = "GetItinaryResponse", targetNamespace = "http://tempuri.org/", className = "com.soap.ws.client.generated.GetItinaryResponse")
     public String getItinary(
         @WebParam(name = "origin", targetNamespace = "http://tempuri.org/")
         String origin,

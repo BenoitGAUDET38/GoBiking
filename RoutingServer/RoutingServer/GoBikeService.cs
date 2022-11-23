@@ -12,12 +12,12 @@ namespace RoutingServer
 {
 	public class GoBikeService : IGoBikeService
 	{
-		public async Task<string> GetItinary(string originAdress, string destinationAdress)
+		public string GetItinary(string originAdress, string destinationAdress)
 		{
 			try
 			{
 				Itinary itinary = new Itinary();
-				return await itinary.GetItinaryAsync(originAdress, destinationAdress);
+				return itinary.GetItinaryAsync(originAdress, destinationAdress).Result;
 			}
 			catch (Exception)
 			{

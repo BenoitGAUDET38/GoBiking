@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IGoBikeService.cs" />
+    <Compile Include="Tools\Exceptions.cs" />
     <Compile Include="Tools\Itinary.cs" />
     <Compile Include="Tools\JCDecaux\Contract.cs" />
     <Compile Include="Tools\JCDecaux\Station.cs" />

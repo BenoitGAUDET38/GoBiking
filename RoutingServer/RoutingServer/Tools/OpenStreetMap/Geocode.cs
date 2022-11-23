@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoutingServer.Tools
+namespace RoutingServer.Tools.OpenStreetMap
 {
-    public class Feature
+    public class GeocodeFeature
     {
         public Geometry geometry { get; set; }
-        public Properties properties { get; set; }
+        public GeocodeProperties properties { get; set; }
     }
 
     public class Geometry
@@ -17,7 +17,7 @@ namespace RoutingServer.Tools
         public List<double> coordinates { get; set; }
     }
 
-    public class Properties
+    public class GeocodeProperties
     {
         public string country { get; set; }
         public string locality { get; set; }
@@ -25,6 +25,6 @@ namespace RoutingServer.Tools
 
     public class Geocode
     {
-        public List<Feature> features { get; set; }
+        public List<GeocodeFeature> features { get; set; }
     }
 }

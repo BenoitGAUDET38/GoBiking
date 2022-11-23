@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static RoutingServer.Tools.OpenStreetMap.Query;
 
 namespace RoutingServer.Tools.OpenStreetMap
 {
@@ -32,21 +31,19 @@ namespace RoutingServer.Tools.OpenStreetMap
 		{
             string res = metadata.query.profile + " :" + Environment.NewLine;
             // TODO : check the meaning of the array of features and segments
-            if (features.Count() == 0)
+            if (features.Count() == 0 && features[0].properties.segments.Count() == 0)
                 return res;
-            
-			foreach (Segment segment in features[0].properties.segments)
-			{
-                res += " -> " + "Segment distance : " + segment.distance + "m" + Environment.NewLine; // add total distance
-                res += "    " + "Segment duration : " + segment.duration + "s" + Environment.NewLine; // add total duration
 
-                int i = 0;
-                foreach (Step step in segment.steps)
-                {
-                    res += "    " + i + " -> " + "Instruction : " + step.instruction + Environment.NewLine;
-                    res += "    " + "     " + "Name : " + step.name + Environment.NewLine;
-                    i++;
-                }
+            Segment segment = features[0].properties.segments[0];
+            res += " -> " + "Segment distance : " + segment.distance + "m" + Environment.NewLine; // add total distance
+            res += "    " + "Segment duration : " + segment.duration + "s" + Environment.NewLine; // add total duration
+
+            int i = 0;
+            foreach (Step step in segment.steps)
+            {
+                res += "    " + i + " -> " + "Instruction : " + step.instruction + Environment.NewLine;
+                res += "    " + "     " + "Name : " + step.name + Environment.NewLine;
+                i++;
             }
 
             return res;

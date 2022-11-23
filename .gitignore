@@ -7,6 +7,13 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Specific ignores
+.idea
+target
+
+
+
+
 # User-specific files
 *.rsuser
 *.suo

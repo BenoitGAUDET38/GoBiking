@@ -18,28 +18,48 @@ namespace RoutingServer.Tools
 			string originCityName = await openStreetMapTools.GetCityFromCoordinateAsync(originCoordinate);
 			string destinationCityName = await openStreetMapTools.GetCityFromCoordinateAsync(destinationCoordinate);
 
+			// get the closests stations
 			JCDecauxTools jCDecauxTools = new JCDecauxTools();
-			Station closestOriginStation = await jCDecauxTools.GetNearestStationAsync(originCityName, originCoordinate);
-			Station closestDestinationStation = await jCDecauxTools.GetNearestStationAsync(destinationCityName, destinationCoordinate);
+			Station closestOriginStation = await jCDecauxTools.GetNearestStationWithAvailableBikeAsync(originCityName, originCoordinate);
+			Station closestDestinationStation = await jCDecauxTools.GetNearestStationWithAvailableStandAsync(destinationCityName, destinationCoordinate);
 
-			// get the 3 directions
+			// get the 3 directions corresponding to the bike traject
 			Direction originToStationDirection = await openStreetMapTools.GetDirectionsAsync(originCoordinate, closestOriginStation.position, false);
 			Direction stationToStationDirection = await openStreetMapTools.GetDirectionsAsync(closestOriginStation.position, closestDestinationStation.position, true);
 			Direction stationToDestionationDirection = await openStreetMapTools.GetDirectionsAsync(closestDestinationStation.position, destinationCoordinate, false);
 
-			// INFORMATIONS TO RETURN
-			// put the 3 direction in a string
-			double totalDistance = originToStationDirection.GetFirstSegmentDistance() + stationToStationDirection.GetFirstSegmentDistance() + stationToDestionationDirection.GetFirstSegmentDistance();
-			double totalDuration = originToStationDirection.GetFirstSegmentDuration() + stationToStationDirection.GetFirstSegmentDuration() + stationToDestionationDirection.GetFirstSegmentDuration();
+			// get direction corresponding to the walk traject
+			Direction walkDirection = await openStreetMapTools.GetDirectionsAsync(originCoordinate, destinationCoordinate, false);
 
-			string res = "Total distance : " + totalDistance + "m" + Environment.NewLine
-				+ "Total duration : " + totalDuration + "s" + Environment.NewLine
-				+ originToStationDirection.ToString() + Environment.NewLine
-				+ stationToStationDirection.ToString() + Environment.NewLine
-				+ stationToDestionationDirection.ToString() + Environment.NewLine;
+			double totalDurationWalking = walkDirection.GetFirstSegmentDuration();
+			double totalDurationWithBike = originToStationDirection.GetFirstSegmentDuration() + stationToStationDirection.GetFirstSegmentDuration() + stationToDestionationDirection.GetFirstSegmentDuration();
 
-			return res;
+			if (totalDurationWalking < totalDurationWithBike)
+			{
+				double totalDistance = walkDirection.GetFirstSegmentDuration();
+
+				return "Total distance : " + totalDistance + "m" + Environment.NewLine
+					+ "Total duration : " + totalDurationWalking + "s" + Environment.NewLine
+					+ walkDirection.ToString();
+			}
+			else
+			{
+				// INFORMATIONS TO RETURN
+				// put the 3 direction in a string
+				double totalDistance = originToStationDirection.GetFirstSegmentDistance() + stationToStationDirection.GetFirstSegmentDistance() + stationToDestionationDirection.GetFirstSegmentDistance();
+
+				return "Total distance : " + totalDistance + "m" + Environment.NewLine
+					+ "Total duration : " + totalDurationWithBike + "s" + Environment.NewLine
+					+ originToStationDirection.ToString() + Environment.NewLine
+					+ stationToStationDirection.ToString() + Environment.NewLine
+					+ stationToDestionationDirection.ToString();
+			}
 		}
 
+
+
 	}
+
+
+
 }

@@ -28,16 +28,12 @@ namespace RoutingServer
             string positionJson = await RequestTools.GetRequest(positionUrl);
             Geocode geocode = JsonSerializer.Deserialize<Geocode>(positionJson);
 
+            if (geocode.features.Count == 0)
+                throw new IncorrectAdressException();
 
-            Coordinate position = null;
-            if (geocode.features.Count > 0)
-			{
-                double latitude = geocode.features[0].geometry.coordinates[1];
-                double longitude = geocode.features[0].geometry.coordinates[0];
-                position = new Coordinate(latitude, longitude);
-            }
-
-            return position;
+            double latitude = geocode.features[0].geometry.coordinates[1];
+            double longitude = geocode.features[0].geometry.coordinates[0];
+            return new Coordinate(latitude, longitude);
 		}
 
         /**

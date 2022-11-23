@@ -33,10 +33,10 @@ namespace RoutingServer
 			List<Contract> contracts = await GetContracts();
 			foreach (Contract contract in contracts)
 			{
-				if (contract.name.Equals(contractName))
-					return contract;
+				if (contract.cities.Contains(contractName))
+					return contract;				
 			}
-			return null;
+			throw new ContractNotCoveredException();
 		}
 
 		/**
@@ -51,12 +51,10 @@ namespace RoutingServer
 		}
 
 		/**
-		 * Get the closest station from the given coordinate matching with the given contract name
+		 * Get the closest station from the given coordinate matching from the given list of stations
 		 */
-		public async Task<Station> GetNearestStationAsync(string contractName, Coordinate currentCoordinate)
+		public Station GetNearestStationAsync(List<Station> stations, Coordinate currentCoordinate)
 		{
-			List<Station> stations = await GetStations(contractName);
-
 			// Get the closest station from the given coordinate
 			GeoCoordinate currentCoordianteGeo = new GeoCoordinate(currentCoordinate.latitude, currentCoordinate.longitude);
 			double distanceClosestStation = -1;
@@ -74,6 +72,29 @@ namespace RoutingServer
 			}
 
 			return closestStation;
+		}
+
+		/**
+		 * Get the closest station with an available bike of the given coordinate with the given contract name
+		 */
+		public async Task<Station> GetNearestStationWithAvailableBikeAsync(string contractName, Coordinate currentCoordinate)
+		{
+			List<Station> stations = await GetStations(contractName);
+			stations.RemoveAll(s => s.totalStands.availabilities.bikes <= 0);
+
+			return GetNearestStationAsync(stations, currentCoordinate);
+		}
+
+		/**
+		 * Get the closest station with an available bike of the given coordinate with the given contract name
+		 */
+		public async Task<Station> GetNearestStationWithAvailableStandAsync(string contractName, Coordinate currentCoordinate)
+		{
+			List<Station> stations = await GetStations(contractName);
+			stations.RemoveAll(s => s.totalStands.availabilities.stands <= 0);
+			
+
+			return GetNearestStationAsync(stations, currentCoordinate);
 		}
 	}
 }

@@ -77,6 +77,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\JCDecauxProxyCacheService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="IGoBikeService.cs" />
     <Compile Include="Tools\Exceptions.cs" />
     <Compile Include="Tools\Itinary.cs" />
@@ -93,7 +98,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\JCDecauxProxyCacheService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\JCDecauxProxyCacheService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\JCDecauxProxyCacheService\JCDecauxService.wsdl" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\JCDecauxProxyCacheService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\JCDecauxProxyCacheService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\JCDecauxProxyCacheService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\JCDecauxProxyCacheService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -20,10 +20,28 @@ namespace RoutingServer
 		 */
 		public async Task<List<Contract>> GetContracts()
 		{
-			string contractsUrl = _baseUrl + "contracts" + "?apiKey=" + _JCDecauxApiKey;
+			/*string contractsUrl = _baseUrl + "contracts" + "?apiKey=" + _JCDecauxApiKey;
 			string contractsJson = await RequestTools.GetRequest(contractsUrl);
+			return JsonSerializer.Deserialize<List<Contract>>(contractsJson);*/
+			JCDecauxProxyCacheService.JCDecauxServiceClient jCDecauxProxyCacheServiceClient = new JCDecauxProxyCacheService.JCDecauxServiceClient();
+			string contractsJson = await jCDecauxProxyCacheServiceClient.GetContractsAsync();
 			return JsonSerializer.Deserialize<List<Contract>>(contractsJson);
 		}
+
+		/**
+		 * Return the list of stations matching with the given contract name
+		 */
+		public async Task<List<Station>> GetStations(string contractName)
+		{
+			/*string stationsUrl = _baseUrl + "stations" + "?apiKey=" + _JCDecauxApiKey
+				+ "&contract=" + contractName;
+			string stationsJson = await RequestTools.GetRequest(stationsUrl);
+			return JsonSerializer.Deserialize<List<Station>>(stationsJson);*/
+			JCDecauxProxyCacheService.JCDecauxServiceClient jCDecauxProxyCacheServiceClient = new JCDecauxProxyCacheService.JCDecauxServiceClient();
+			string stationsJson = await jCDecauxProxyCacheServiceClient.GetStationsAsync(contractName);
+			return JsonSerializer.Deserialize<List<Station>>(stationsJson);
+		}
+
 
 		/**
 		 * Return the contract matching with the given contract name
@@ -37,17 +55,6 @@ namespace RoutingServer
 					return contract;				
 			}
 			throw new ContractNotCoveredException();
-		}
-
-		/**
-		 * Return the list of stations matching with the given contract name
-		 */
-		public async Task<List<Station>> GetStations(string contractName)
-		{
-			string stationsUrl = _baseUrl + "stations" + "?apiKey=" + _JCDecauxApiKey
-				+ "&contract=" + contractName;
-			string stationsJson = await RequestTools.GetRequest(stationsUrl);
-			return JsonSerializer.Deserialize<List<Station>>(stationsJson);
 		}
 
 		/**

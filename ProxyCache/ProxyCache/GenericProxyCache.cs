@@ -21,7 +21,7 @@ namespace ProxyCache
 				return (T) _cache.Get(cacheItemName);
 
 			DateTimeOffset dt = DateTimeOffset.UtcNow;
-			dt.AddMinutes(DT_DEFAULT);
+			dt.AddSeconds(DT_DEFAULT);
 
 			return SetT(cacheItemName, dt);
 		}
@@ -32,7 +32,7 @@ namespace ProxyCache
 				return (T)_cache.Get(cacheItemName);
 
 			DateTimeOffset dt = DateTimeOffset.UtcNow;
-			dt.AddMinutes(dtSeconds);
+			dt.AddSeconds(dtSeconds);
 
 			return SetT(cacheItemName, dt);
 		}

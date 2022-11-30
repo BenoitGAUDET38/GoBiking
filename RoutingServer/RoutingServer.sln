@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32929.386
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoutingServer", "RoutingServer\RoutingServer.csproj", "{2C21AC78-4043-43FC-A342-48A0F554B4E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProxyCache", "ProxyCache\ProxyCache.csproj", "{F91AB2B6-A470-4FDD-A3EC-5FF550AF7FC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ActiveMq", "ActiveMq\ActiveMq.csproj", "{9B1D62A9-D73D-4712-948F-4077CBA59DEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{2C21AC78-4043-43FC-A342-48A0F554B4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C21AC78-4043-43FC-A342-48A0F554B4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C21AC78-4043-43FC-A342-48A0F554B4E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F91AB2B6-A470-4FDD-A3EC-5FF550AF7FC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F91AB2B6-A470-4FDD-A3EC-5FF550AF7FC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F91AB2B6-A470-4FDD-A3EC-5FF550AF7FC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F91AB2B6-A470-4FDD-A3EC-5FF550AF7FC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B1D62A9-D73D-4712-948F-4077CBA59DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B1D62A9-D73D-4712-948F-4077CBA59DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B1D62A9-D73D-4712-948F-4077CBA59DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B1D62A9-D73D-4712-948F-4077CBA59DEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

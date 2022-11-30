@@ -51,7 +51,7 @@ namespace RoutingServer
 			List<Contract> contracts = await GetContracts();
 			foreach (Contract contract in contracts)
 			{
-				if (contract.cities.Contains(contractName))
+				if (contract.name.Equals(contractName) || contract.cities.Contains(contractName))
 					return contract;				
 			}
 			throw new ContractNotCoveredException();

@@ -98,8 +98,11 @@
   <ItemGroup>
     <Compile Include="GenericProxyCache.cs" />
     <Compile Include="IJCDecauxService.cs" />
-    <Compile Include="JCDecauxItem.cs" />
+    <Compile Include="JCDecauxContracts.cs" />
+    <Compile Include="JCDecauxItems\Contract.cs" />
+    <Compile Include="JCDecauxItems\Station.cs" />
     <Compile Include="JCDecauxService.cs" />
+    <Compile Include="JCDecauxStations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,9 +1,5 @@
-﻿using System;
+﻿using ProxyCache.JCDecauxItems;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 
 namespace ProxyCache
 {
@@ -12,20 +8,30 @@ namespace ProxyCache
 		private GenericProxyCache<JCDecauxContracts> _contractsProxyCache;
 		private GenericProxyCache<JCDecauxStations> _stationsProxyCache;
 
+		/**
+		 * Initialization of the caches
+		 */
 		public JCDecauxService() 
 		{
 			_contractsProxyCache = new GenericProxyCache<JCDecauxContracts>();
+			_stationsProxyCache = new GenericProxyCache<JCDecauxStations>();
 		}
 
-
+		/**
+		 * Return the contracts
+		 */
 		public string GetContracts()
 		{
-			return _contractsProxyCache.GetT("", null).json;
+			return _contractsProxyCache.GetT("contracts", 600).GetContractsJson();
 		}
 
-		public string GetStations(string contract)
+		/**
+		 * Return the stations corresponding with the given contract name
+		 */
+		public string GetStations(string contractName)
 		{
-			return _stationsProxyCache.GetT(contract, null).json;
+			object[] args = { contractName };
+			return _stationsProxyCache.GetT(contractName, args).GetStationsJson();
 		}
 	}
 }

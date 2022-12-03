@@ -12,7 +12,6 @@ namespace ActiveMq
 	{
 		static void Main(string[] args)
 		{
-			/*
 			// Create a Connection Factory.
 			Uri connecturi = new Uri("activemq:tcp://localhost:61616");
 			ConnectionFactory connectionFactory = new ConnectionFactory(connecturi);
@@ -25,7 +24,7 @@ namespace ActiveMq
 			ISession session = connection.CreateSession();
 
 			// Use the session to target a queue.
-			IDestination destination = session.GetQueue("test");
+			IDestination destination = session.GetQueue("my_test_queue");
 
 			// Create a Producer targetting the selected queue.
 			IMessageProducer producer = session.CreateProducer(destination);
@@ -43,7 +42,6 @@ namespace ActiveMq
 			// Don't forget to close your session and connection when finished.
 			session.Close();
 			connection.Close();
-			*/
 		}
 	}
 }

@@ -12,13 +12,33 @@ namespace RoutingServer
 {
 	public class GoBikeService : IGoBikeService
 	{
+		/**
+		 * Generate the initary instructions and sent them into a queue
+		 * Return the queue name.
+		 */
 		public string GetItinary(string originAdress, string destinationAdress)
 		{
+			// Get itinary instructions
 			Itinary itinary = new Itinary();
-			return itinary.GetItinaryAsync(originAdress, destinationAdress).Result;
+			string itinaryInstructions = itinary.GetItinaryAsync(originAdress, destinationAdress).Result;
+			//return itinaryInstructions;
+
+			// Generate a random queue name
+			string queueName = ActiveMqHelper.GenerateRandomQueueName();
+			Console.WriteLine("Queue name : " + queueName);
+
+			// Create the producer and sent the instructions
+			ActiveMqHelper activeMqHelper = new ActiveMqHelper();
+			activeMqHelper.CreateProducer(queueName);
+			activeMqHelper.SendMessagesOnNewLine(itinaryInstructions);
+			activeMqHelper.CloseSession();
+
+			// Return the queue name
+			Console.WriteLine("New instructions sent to queue : " + queueName);
+			return queueName;
 			try
 			{
-				
+
 			}
 			catch (Exception)
 			{

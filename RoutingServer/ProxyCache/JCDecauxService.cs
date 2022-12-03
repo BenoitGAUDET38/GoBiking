@@ -34,8 +34,7 @@ namespace ProxyCache
 			Console.WriteLine("Requete : " + contractName);
 			object[] args = { contractName };
 
-			string res=  _stationsProxyCache.GetT(contractName, args).GetStationsJson();
-			Console.WriteLine(res);
+			string res =  _stationsProxyCache.GetT(contractName, args).GetStationsJson();
 			return res;
 		}
 	}

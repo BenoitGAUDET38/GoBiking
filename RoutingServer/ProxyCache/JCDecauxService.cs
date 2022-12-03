@@ -1,4 +1,5 @@
 ﻿using ProxyCache.JCDecauxItems;
+using System;
 using System.Collections.Generic;
 
 namespace ProxyCache
@@ -30,8 +31,12 @@ namespace ProxyCache
 		 */
 		public string GetStations(string contractName)
 		{
+			Console.WriteLine("Requete : " + contractName);
 			object[] args = { contractName };
-			return _stationsProxyCache.GetT(contractName, args).GetStationsJson();
+
+			string res=  _stationsProxyCache.GetT(contractName, args).GetStationsJson();
+			Console.WriteLine(res);
+			return res;
 		}
 	}
 }

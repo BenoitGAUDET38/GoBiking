@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.ServiceModel.Channels;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace ProxyCache
          */
 		public static async Task<string> GetRequest(string url)
         {
-            string responseBody = "";
+			string responseBody = "";
             try
             {
                 HttpResponseMessage response = await client.GetAsync(url);

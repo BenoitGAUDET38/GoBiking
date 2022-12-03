@@ -8,7 +8,10 @@ namespace RoutingServer.Tools.OpenStreetMap
 {
     public class Direction
     {
-        public List<Feature> features { get; set; }
+        private static readonly string WALK_PROFIL = "foot-walking";
+        private static readonly string BIKE_PROFIL = "cycling-regular";
+
+		public List<Feature> features { get; set; }
         public Metadata metadata { get; set; }
 
         public double GetFirstSegmentDuration()
@@ -29,7 +32,13 @@ namespace RoutingServer.Tools.OpenStreetMap
 
         public override string ToString()
 		{
-            string res = metadata.query.profile + " :" + Environment.NewLine;
+            string res;
+            if (metadata.query.profile == WALK_PROFIL)
+                res = "-------------------------------- WALK --------------------------------" + Environment.NewLine;
+			else if (metadata.query.profile == BIKE_PROFIL)
+				res = "-------------------------------- BIKE --------------------------------" + Environment.NewLine;
+			else
+			    res = metadata.query.profile + " :" + Environment.NewLine;
             // TODO : check the meaning of the array of features and segments
             if (features.Count() == 0 && features[0].properties.segments.Count() == 0)
                 return res;

@@ -14,10 +14,11 @@ namespace RoutingServer
 	{
 		public string GetItinary(string originAdress, string destinationAdress)
 		{
+			Itinary itinary = new Itinary();
+			return itinary.GetItinaryAsync(originAdress, destinationAdress).Result;
 			try
 			{
-				Itinary itinary = new Itinary();
-				return itinary.GetItinaryAsync(originAdress, destinationAdress).Result;
+				
 			}
 			catch (Exception)
 			{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="53c96b36-709b-4fb0-bd5f-5cb1acdbe86e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="46dc2d6a-ba6b-436c-a69a-57e46a3d5abc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,9 +22,9 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxService/?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="df636cc5-3644-469d-b040-ed004564f86e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxService/?xsd=xsd1" />
-    <MetadataFile FileName="JCDecauxService1.wsdl" MetadataType="Wsdl" ID="045a2e5b-54c1-4f14-a6f5-26cc4306bccd" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxService/?wsdl" />
-    <MetadataFile FileName="item21.xsd" MetadataType="Schema" ID="8c549295-ab5e-4b98-bda0-71a2a2ee79ae" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxService/?xsd=xsd0" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="a37c6176-7fe8-4559-a1c4-39feffb60c3c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxService/?xsd=xsd1" />
+    <MetadataFile FileName="JCDecauxService.wsdl" MetadataType="Wsdl" ID="021152af-b5ae-4697-b427-d2266f6a41dc" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxService/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="43bc6006-1331-4eab-acb4-93b0b0c498e4" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/ProxyCache/JCDecauxService/?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

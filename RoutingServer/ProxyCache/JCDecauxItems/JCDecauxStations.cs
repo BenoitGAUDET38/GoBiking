@@ -23,6 +23,14 @@ namespace ProxyCache.JCDecauxItems
 			_stations = GetStationsAsync(contractName).Result;
 		}
 
+		private async Task<string> GetStationsStringAsync(string contractName)
+		{
+			string stationsUrl = _baseUrl + "stations" + "?apiKey=" + _JCDecauxApiKey
+				+ "&contract=" + contractName;
+			string stationsJson = await RequestTools.GetRequest(stationsUrl);
+			return stationsJson;
+		}
+
 		/**
 		 * Return the list of stations matching with the given contract name
 		 */

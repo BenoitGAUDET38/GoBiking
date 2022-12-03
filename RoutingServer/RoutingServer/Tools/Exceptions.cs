@@ -14,4 +14,7 @@ namespace RoutingServer.Tools
 
 	[Serializable]
 	class IncorrectAdressException : Exception { }
+
+	[Serializable]
+	class MultipleCitiesItinaryException : Exception { }
 }

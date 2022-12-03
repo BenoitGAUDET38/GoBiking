@@ -13,15 +13,43 @@ namespace RoutingServer.Tools
 		public async Task<string> GetItinaryAsync(string originAdress, string destinationAdress)
 		{
 			OpenStreetMapTools openStreetMapTools = new OpenStreetMapTools();
-			Coordinate originCoordinate = await openStreetMapTools.GetCoordinateFromAdressAsync(originAdress);
-			Coordinate destinationCoordinate = await openStreetMapTools.GetCoordinateFromAdressAsync(destinationAdress);
-			string originCityName = await openStreetMapTools.GetCityFromCoordinateAsync(originCoordinate);
+
+			// get the coordinates corresponding with the givens adresses and manage exceptions
+			Coordinate originCoordinate;
+			Coordinate destinationCoordinate;
+			try
+			{
+				originCoordinate = await openStreetMapTools.GetCoordinateFromAdressAsync(originAdress);
+				destinationCoordinate = await openStreetMapTools.GetCoordinateFromAdressAsync(destinationAdress);
+			}
+			catch (IncorrectAdressException)
+			{
+				return "Origine or destination adress hasn't been found.";
+			}
+
+			// get the cities names corresponding with the coordinates
+			string origineCityName = await openStreetMapTools.GetCityFromCoordinateAsync(originCoordinate);
 			string destinationCityName = await openStreetMapTools.GetCityFromCoordinateAsync(destinationCoordinate);
+
+			// get the contract name corresponding with the itinary cities and manage exceptions
+			string contractName;
+			try
+			{
+				contractName = await GetContractFromItinaryCities(origineCityName, destinationCityName);
+			}
+			catch (MultipleCitiesItinaryException)
+			{
+				return "The itinary must be contained within a single contract area.";
+			}
+			catch (ContractNotCoveredException)
+			{
+				return "The origine and destination adresses must be contained within a single contract area.";
+			}
 
 			// get the closests stations
 			JCDecauxTools jCDecauxTools = new JCDecauxTools();
-			Station closestOriginStation = await jCDecauxTools.GetNearestStationWithAvailableBikeAsync(originCityName, originCoordinate);
-			Station closestDestinationStation = await jCDecauxTools.GetNearestStationWithAvailableStandAsync(destinationCityName, destinationCoordinate);
+			Station closestOriginStation = await jCDecauxTools.GetNearestStationWithAvailableBikeAsync(contractName, originCoordinate);
+			Station closestDestinationStation = await jCDecauxTools.GetNearestStationWithAvailableStandAsync(contractName, destinationCoordinate);
 
 			// get the 3 directions corresponding to the bike traject
 			Direction originToStationDirection = await openStreetMapTools.GetDirectionsAsync(originCoordinate, closestOriginStation.position, false);
@@ -31,6 +59,7 @@ namespace RoutingServer.Tools
 			// get direction corresponding to the walk traject
 			Direction walkDirection = await openStreetMapTools.GetDirectionsAsync(originCoordinate, destinationCoordinate, false);
 
+			// calculate the total durations for the 2 itinaries
 			double totalDurationWalking = walkDirection.GetFirstSegmentDuration();
 			double totalDurationWithBike = originToStationDirection.GetFirstSegmentDuration() + stationToStationDirection.GetFirstSegmentDuration() + stationToDestionationDirection.GetFirstSegmentDuration();
 
@@ -54,6 +83,23 @@ namespace RoutingServer.Tools
 					+ stationToStationDirection.ToString() + Environment.NewLine
 					+ stationToDestionationDirection.ToString();
 			}
+		}
+
+		/**
+		 * Return the contract corresponding with the given origine and destination city names.
+		 * -> if origine and destination contracts are different : Throw MultipleCitiesItinaryException
+		 * -> if origine or destination arn't in a covered contract : Throw ContractNotCoveredException
+		 */
+		private async Task<string> GetContractFromItinaryCities(string origineCityName, string destinationCityName)
+		{
+			JCDecauxTools jCDecauxTools = new JCDecauxTools();
+			Contract origineContract = await jCDecauxTools.GetContract(origineCityName);
+			Contract destinationContract = await jCDecauxTools.GetContract(destinationCityName);
+
+			if (origineContract.name.Equals(destinationContract.name))
+				return origineContract.name;
+
+			throw new MultipleCitiesItinaryException();
 		}
 
 

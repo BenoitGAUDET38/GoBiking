@@ -37,7 +37,6 @@ public class ActiveMqClient implements javax.jms.MessageListener {
         }
     }
 
-
     private void configurerConsommateur(String queueName) throws JMSException, NamingException{
         // Open session
         receiveSession = connect.createSession(false,javax.jms.Session.AUTO_ACKNOWLEDGE);
@@ -47,6 +46,7 @@ public class ActiveMqClient implements javax.jms.MessageListener {
         qReceiver.setMessageListener(this);
     }
 
+    // Print message body
     @Override
     public void onMessage(Message message) {
         // Methode permettant au consommateur de consommer effectivement chaque msg recu

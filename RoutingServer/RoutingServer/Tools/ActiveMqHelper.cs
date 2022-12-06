@@ -15,9 +15,9 @@ namespace RoutingServer.Tools
 		private IMessageProducer _producer;
 
 		/**
-		 * Create the queue for the producer
+		 * Create the producer of the queue
 		 */
-		public void CreateProducer(string queueName)
+		public ActiveMqHelper(string queueName)
 		{
 			// Create a Connection Factory.
 			Uri connecturi = new Uri("activemq:tcp://localhost:61616");

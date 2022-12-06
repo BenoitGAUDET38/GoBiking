@@ -13,7 +13,7 @@ namespace RoutingServer.Tools
 		public async Task<string> GetItinaryAsync(string originAdress, string destinationAdress)
 		{
 			if (originAdress.Length == 0 || destinationAdress.Length == 0)
-				return "No adress found.";
+				return "No address found.";
 
 			OpenStreetMapTools openStreetMapTools = new OpenStreetMapTools();
 
@@ -99,7 +99,7 @@ namespace RoutingServer.Tools
 			Contract origineContract = await jCDecauxTools.GetContract(origineCityName);
 			Contract destinationContract = await jCDecauxTools.GetContract(destinationCityName);
 
-			if (origineContract.name.Equals(destinationContract.name))
+			if (origineContract.name.Equals(destinationContract.name, StringComparison.CurrentCultureIgnoreCase))
 				return origineContract.name;
 
 			throw new MultipleCitiesItinaryException();

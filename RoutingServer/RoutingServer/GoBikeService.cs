@@ -18,20 +18,28 @@ namespace RoutingServer
 		 */
 		public string GetItinary(string originAdress, string destinationAdress)
 		{
+			// Get itinary instructions
+			string itinaryInstructions;
 			try
 			{
-				// Get itinary instructions
 				Itinary itinary = new Itinary();
-				string itinaryInstructions = itinary.GetItinaryAsync(originAdress, destinationAdress).Result;
-				//return itinaryInstructions;
+				itinaryInstructions = itinary.GetItinaryAsync(originAdress, destinationAdress).Result;
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+				return "Des problèmes ont été rencontré par le serveur...";
+			}
 
+			// Create the queue and send all informations in it
+			try
+			{
 				// Generate a random queue name
 				string queueName = ActiveMqHelper.GenerateRandomQueueName();
 				Console.WriteLine("Queue name : " + queueName);
 
 				// Create the producer and sent the instructions
-				ActiveMqHelper activeMqHelper = new ActiveMqHelper();
-				activeMqHelper.CreateProducer(queueName);
+				ActiveMqHelper activeMqHelper = new ActiveMqHelper(queueName);
 				activeMqHelper.SendMessagesOnNewLine(itinaryInstructions);
 				activeMqHelper.CloseSession();
 
@@ -42,7 +50,7 @@ namespace RoutingServer
 			catch (Exception e)
 			{
 				Console.WriteLine(e);
-				return "Des problèmes ont été rencontré par le serveur...";
+				return "Problème lors de la création de queue";
 			}
 		}
 	}

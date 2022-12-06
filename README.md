@@ -13,12 +13,15 @@ GoBiking a pour objectif de récupérer les indications afin d'aller d'une adres
 
 ## Lancement du projet
 ### Lancer le proxy cache
+- Compiler le projet ProxyCache de la solution RoutingServer
 - Aller dans ProxyCache/bin/Debug
-- Lancer ProxyCache.exe
+- Lancer **ProxyCache.exe**
 
 ### Lancer le routing serveur
+- Compiler le projet RoutingServer de la solution RoutingServer
 - Aller dans RoutingServer/bin/Debug
-- Lancer RoutingServer.exe
+- Lancer **RoutingServer.exe**
 
 ### Lancer le client Java
-- Lancer la classe Main du projet HeavyClient en java
+- Compiler le projet Java HeavyClient
+- Lancer la classe **Main** du projet HeavyClient

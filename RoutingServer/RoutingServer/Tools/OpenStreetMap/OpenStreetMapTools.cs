@@ -60,7 +60,7 @@ namespace RoutingServer
         }
 
         /**
-         * Return a string corresponding to the directions to take between 2 coordinates in JSON format (WITH BIKE MOVE SPEED)
+         * Return a string corresponding to the directions to take between 2 coordinates in JSON format
          */
         public async Task<Direction> GetDirectionsAsync(Coordinate startCoordinate, Coordinate endCoordinate, bool onBike)
 		{

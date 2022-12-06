@@ -12,6 +12,9 @@ namespace RoutingServer.Tools
 	{
 		public async Task<string> GetItinaryAsync(string originAdress, string destinationAdress)
 		{
+			if (originAdress.Length == 0 || destinationAdress.Length == 0)
+				return "No adress found.";
+
 			OpenStreetMapTools openStreetMapTools = new OpenStreetMapTools();
 
 			// get the coordinates corresponding with the givens adresses and manage exceptions

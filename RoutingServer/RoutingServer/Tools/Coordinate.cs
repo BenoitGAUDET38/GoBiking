@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,7 @@ namespace RoutingServer
 		 */
 		public string GetLatitudeString()
 		{
-			return latitude.ToString().Replace(',', '.');
+			return latitude.ToString(CultureInfo.InvariantCulture);
 		}
 
 		/**
@@ -30,7 +31,7 @@ namespace RoutingServer
 		 */
 		public string GetLongitudeString()
 		{
-			return longitude.ToString().Replace(',', '.');
+			return longitude.ToString(CultureInfo.InvariantCulture);
 		}
 
 		public override string ToString()

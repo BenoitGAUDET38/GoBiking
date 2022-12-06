@@ -66,7 +66,6 @@ namespace RoutingServer.Tools
 		{
 			// split the text using NewLine as separator
 			string[] lines = longText.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-			Console.WriteLine(lines.Length);
 
 			// send a message for each line
 			foreach (string line in lines)

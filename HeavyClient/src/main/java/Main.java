@@ -8,7 +8,7 @@ public class Main {
         GoBikeService goBikeService = new GoBikeService();
         IGoBikeService iGoBikeService = goBikeService.getBasicHttpBindingIGoBikeService();
 
-        String queueName = iGoBikeService.getItinary("3 Place de la République, Mulhouse", "BOULEVARD CHARLES STOESSEL, Mulhouse");
+        String queueName = iGoBikeService.getItinary("3 Place de la République, Mulhouse", "");
         System.out.println("Read instructions on queue '" + queueName + "' :");
 
         ActiveMqClient a = new ActiveMqClient();

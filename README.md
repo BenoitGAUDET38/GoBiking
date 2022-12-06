@@ -5,7 +5,7 @@ GoBiking a pour objectif de récupérer les indications afin d'aller d'une adres
 
 ## Etapes pour lancer le projet
 ### Lancer ActiveMq
-*Si ActiveMq n'est pas installer*
+*Si ActiveMq n'est pas installé*
 - Télécharger activemq
 - Mettre le fichier bin du dossier téléchargé dans le path
 *Après que ActiveMq soit installé*
